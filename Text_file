@@ -18,3 +18,34 @@ driver.find_element_by_xpath("//label[@for='dt6 am to 12 pm' and @class='custom-
 driver.find_element_by_xpath("//i[@id='i-icon-profile']").click()
 driver.find_element_by_xpath("//li[@id='signInLink']").click()
 driver.find_element_by_xpath("//div[@class='signin-screen']").click()
+
+
+driver.switch_to.window(driver.window_handles[0])
+print(driver.title)
+
+Total_frames = driver.find_elements_by_tag_name("iframe")
+count_element =len(list(Total_frames))
+print count_element
+
+my_frame = driver.find_element_by_xpath(".//iframe[@class='modalIframe']")
+
+driver.switch_to.frame(my_frame)
+driver.find_elements_by_xpath("//div[.='SIGN IN using Email']")[1].click()
+
+driver.switch_to.default_content()
+
+my1_frame = driver.find_element_by_xpath("//iframe[@src='/account?pageName=Home&noReload=noReload']")
+driver.switch_to.frame(my1_frame)
+
+driver.find_element_by_xpath("//input[@id='email-mobile']").send_keys("9792000168")
+sleep(5)
+driver.find_element_by_xpath("//input[@id='password']").send_keys("N0kia@123")
+sleep(5)
+driver.find_element_by_xpath("//button[@id='doSignin']").click()
+
+
+driver.switch_to.default_content()
+my2_frame = driver.find_element_by_xpath("//iframe[@src='/Reward?pageName=Home']")
+driver.switch_to.frame(my2_frame)
+sleep(5)
+driver.find_element_by_xpath("//div[@class='modal']//i[@class='icon-close']").click()
